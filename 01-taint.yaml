@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment 
+  labels:
+    Project: roboshop
+    environment: dev
+  namespace: roboshop
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 30
+  replicas: 1
+  selector:
+    matchLabels:
+      Project: roboshop
+      environment: dev
+  template:
+    metadata:
+      labels:
+        Project: roboshop
+        environment: dev
+    spec:
+      containers:
+      - name: nginx-dep
+        image: nginx
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: deploy-svc
+spec:
+  selector:
+    Project: roboshop
+    environment: dev
+  ports:
+  - protocol: TCP
+    targetPort: 80
+    port: 80
