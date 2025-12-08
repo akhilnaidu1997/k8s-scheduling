@@ -27,8 +27,8 @@ spec:
       containers:
       - name: nginx-dep
         image: nginx
-      # nodeSelector:
-      #   Project: roboshop
+      nodeSelector:
+        Project: roboshop
       tolerations:
       - key: "Project"
         operator: "Equal"
