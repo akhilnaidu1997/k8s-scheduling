@@ -27,6 +27,8 @@ spec:
       containers:
       - name: nginx-dep
         image: nginx
+      nodeSelector:
+        Project: roboshop
 ---
 apiVersion: v1 
 kind: Service
