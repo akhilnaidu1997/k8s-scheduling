@@ -27,10 +27,10 @@ spec:
       containers:
       - name: nginx-dep
         image: nginx
-      nodeSelector:
-        Project: roboshop
+      # nodeSelector:
+      #   project: roboshop
       tolerations:
-      - key: "Project"
+      - key: "project"
         operator: "Equal"
         value: "roboshop"
         effect: "NoSchedule"
