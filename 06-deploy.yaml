@@ -5,12 +5,6 @@ metadata:
   labels:
     Project: roboshop
 spec:
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-  minReadySeconds: 30
   replicas: 4
   selector:
     matchLabels:
@@ -25,7 +19,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: project
+              - key: Project
                 operator: In
                 values:
                 - roboshop
