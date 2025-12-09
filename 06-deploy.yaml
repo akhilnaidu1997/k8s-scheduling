@@ -15,12 +15,10 @@ spec:
   selector:
     matchLabels:
       Project: roboshop
-      environment: dev
   template:
     metadata:
       labels:
         Project: roboshop
-        environment: dev
     spec:
       affinity:
         podAffinity:
