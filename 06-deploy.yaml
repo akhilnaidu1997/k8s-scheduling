@@ -5,16 +5,6 @@ metadata:
   labels:
     Project: roboshop
 spec:
-  affinity:
-    podAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchExpressions:
-          - key: project
-            operator: In
-            values:
-            - roboshop
-        topologyKey: topology.kubernetes.io/zone
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -32,6 +22,16 @@ spec:
         Project: roboshop
         environment: dev
     spec:
+      affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - roboshop
+        topologyKey: topology.kubernetes.io/zone
       containers:
       - name: nginx-dep
         image: nginx
