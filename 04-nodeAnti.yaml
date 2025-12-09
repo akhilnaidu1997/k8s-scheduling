@@ -12,10 +12,14 @@ spec:
             operator: In
             values:
             - us-east-1f
-          - key: project
-            operator: NotIn 
-            values: 
-            - roboshop
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: diskType
+              operator: NotIn
+              values:
+              - ssd
   containers:
   - name: nginx
     image: nginx
