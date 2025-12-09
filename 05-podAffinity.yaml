@@ -13,6 +13,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: podaff
+  labels:
+    project: podaff
 spec:
   affinity:
     podAffinity:
@@ -23,6 +25,26 @@ spec:
             operator: In
             values:
             - roboshop
+        topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx
+---
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: podaff2
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - roboshop
+            - podaff
         topologyKey: topology.kubernetes.io/zone
   containers:
   - name: nginx
