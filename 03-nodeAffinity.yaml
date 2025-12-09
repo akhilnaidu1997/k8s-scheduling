@@ -20,10 +20,10 @@ spec:
       - weight: 1
         preference:
           matchExpressions:
-          - key: project
+          - key: diskType
             operator: In
             values:
-            - roboshop
+            - ssd
   containers:
   - name: nginx
     image: nginx
