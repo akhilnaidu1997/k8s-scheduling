@@ -23,7 +23,7 @@ spec:
                 operator: In
                 values:
                 - roboshop
-            topologyKey: topology.kubernetes.io/hostname
+            topologyKey: kubernetes.io/hostname
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
@@ -32,7 +32,7 @@ spec:
                 operator: In
                 values:
                 - roboshop
-            topologyKey: topology.kubernetes.io/hostname
+            topologyKey: kubernetes.io/hostname
       containers:
       - name: nginx-dep
         image: nginx
