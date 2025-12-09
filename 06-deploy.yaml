@@ -23,15 +23,15 @@ spec:
         environment: dev
     spec:
       affinity:
-    podAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchExpressions:
-          - key: project
-            operator: In
-            values:
-            - roboshop
-        topologyKey: topology.kubernetes.io/zone
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: project
+                operator: In
+                values:
+                - roboshop
+            topologyKey: topology.kubernetes.io/zone
       containers:
       - name: nginx-dep
         image: nginx
