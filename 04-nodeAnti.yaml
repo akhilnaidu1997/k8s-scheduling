@@ -1,0 +1,21 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: affinity
+spec:
+  affinity:
+    nodeAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - us-east-1f
+          - key: project
+            operator: NotIn 
+            values: 
+            - roboshop
+  containers:
+  - name: nginx
+    image: nginx
