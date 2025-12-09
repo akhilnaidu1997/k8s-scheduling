@@ -16,14 +16,14 @@ spec:
           #   operator: In 
           #   values: 
           #   - roboshop
-    preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 1
-        preference:
-          matchExpressions:
-          - key: diskType
-            operator: In
-            values:
-            - ssd
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: diskType
+              operator: In
+              values:
+              - ssd
   containers:
   - name: nginx
     image: nginx
