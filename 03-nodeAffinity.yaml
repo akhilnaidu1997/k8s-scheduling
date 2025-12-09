@@ -24,6 +24,11 @@ spec:
               operator: In
               values:
               - ssd
+        - weight: 10
+          preference:
+            matchExpressions:
+            - key: env
+              operator: Exists
   containers:
   - name: nginx
     image: nginx
