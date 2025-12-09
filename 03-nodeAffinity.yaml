@@ -12,9 +12,17 @@ spec:
             operator: In
             values:
             - us-east-1f
+          # - key: project
+          #   operator: In 
+          #   values: 
+          #   - roboshop
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
           - key: project
-            operator: In 
-            values: 
+            operator: In
+            values:
             - roboshop
   containers:
   - name: nginx
