@@ -23,7 +23,7 @@ spec:
                 operator: In
                 values:
                 - roboshop
-            topologyKey: topology.kubernetes.io/
+            topologyKey: topology.kubernetes.io/zone
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
