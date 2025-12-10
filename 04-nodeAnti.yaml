@@ -12,6 +12,7 @@ spec:
             operator: In
             values:
             - us-east-1f
+            - us-east-1a
       preferredDuringSchedulingIgnoredDuringExecution:
         - weight: 1
           preference:
