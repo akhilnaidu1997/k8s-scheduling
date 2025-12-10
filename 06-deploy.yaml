@@ -32,7 +32,7 @@ spec:
               - key: Project
                 operator: In
                 values:
-                - dev
+                - roboshop
             topologyKey: kubernetes.io/hostname
       containers:
       - name: nginx-dep
