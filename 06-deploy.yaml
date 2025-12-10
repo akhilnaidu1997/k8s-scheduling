@@ -19,19 +19,19 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: diskType
+              - key: Project
                 operator: In
                 values:
-                - ssd
+                - roboshop
             topologyKey: kubernetes.io/hostname
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: diskType
+              - key: Project
                 operator: In
                 values:
-                - ssd
+                - roboshop
             topologyKey: kubernetes.io/hostname
       containers:
       - name: nginx-dep
