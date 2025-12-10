@@ -1,106 +1,106 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: deployment 
-#   labels:
-#     Project: roboshop
-# spec:
-#   replicas: 2
-#   selector:
-#     matchLabels:
-#       Project: roboshop
-#   template:
-#     metadata:
-#       labels:
-#         Project: roboshop
-#     spec:
-#       affinity:
-#         podAffinity:
-#           requiredDuringSchedulingIgnoredDuringExecution:
-#           - labelSelector:
-#               matchExpressions:
-#               - key: Project
-#                 operator: In
-#                 values:
-#                 - roboshop
-#             topologyKey: topology.kubernetes.io/zone
-
-#         podAntiAffinity:
-#           requiredDuringSchedulingIgnoredDuringExecution:
-#           - labelSelector:
-#               matchExpressions:
-#               - key: Project
-#                 operator: In
-#                 values:
-#                 - roboshop
-#             topologyKey: kubernetes.io/hostname
-#       containers:
-#       - name: nginx-dep
-#         image: nginx
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-cache
+  name: deployment 
+  labels:
+    Project: roboshop
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: store
-  replicas: 2
-  # pod definition
+      Project: roboshop
   template:
     metadata:
       labels:
-        app: store
+        Project: roboshop
     spec:
       affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          # pod labels
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - store
-            topologyKey: "kubernetes.io/hostname"
-      containers:
-      - name: redis-server
-        image: redis:3.2-alpine
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: web-server
-spec:
-  selector:
-    matchLabels:
-      app: web-store
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: web-store
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - web-store
-            topologyKey: "kubernetes.io/hostname"
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: app
+              - key: Project
                 operator: In
                 values:
-                - store
-            topologyKey: "kubernetes.io/hostname"
+                - roboshop
+            topologyKey: kubernetes.io/hostname
+
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: Project
+                operator: In
+                values:
+                - dev
+            topologyKey: kubernetes.io/hostname
       containers:
-      - name: web-app
-        image: nginx:1.16-alpine
+      - name: nginx-dep
+        image: nginx
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: redis-cache
+# spec:
+#   selector:
+#     matchLabels:
+#       app: store
+#   replicas: 2
+#   # pod definition
+#   template:
+#     metadata:
+#       labels:
+#         app: store
+#     spec:
+#       affinity:
+#         podAntiAffinity:
+#           requiredDuringSchedulingIgnoredDuringExecution:
+#           # pod labels
+#           - labelSelector:
+#               matchExpressions:
+#               - key: app
+#                 operator: In
+#                 values:
+#                 - store
+#             topologyKey: "kubernetes.io/hostname"
+#       containers:
+#       - name: redis-server
+#         image: redis:3.2-alpine
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: web-server
+# spec:
+#   selector:
+#     matchLabels:
+#       app: web-store
+#   replicas: 2
+#   template:
+#     metadata:
+#       labels:
+#         app: web-store
+#     spec:
+#       affinity:
+#         podAntiAffinity:
+#           requiredDuringSchedulingIgnoredDuringExecution:
+#           - labelSelector:
+#               matchExpressions:
+#               - key: app
+#                 operator: In
+#                 values:
+#                 - web-store
+#             topologyKey: "kubernetes.io/hostname"
+#         podAffinity:
+#           requiredDuringSchedulingIgnoredDuringExecution:
+#           - labelSelector:
+#               matchExpressions:
+#               - key: app
+#                 operator: In
+#                 values:
+#                 - store
+#             topologyKey: "kubernetes.io/hostname"
+#       containers:
+#       - name: web-app
+#         image: nginx:1.16-alpine
