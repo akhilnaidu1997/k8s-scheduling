@@ -27,7 +27,7 @@ spec:
                 operator: In
                 values:
                 - ssd
-            topologyKey: kubernetes.io/hostname
+            topologyKey: topology.kubernetes.io/zone
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
@@ -36,7 +36,7 @@ spec:
                 operator: In
                 values:
                 - roboshop
-            topologyKey: kubernetes.io/hostname
+            topologyKey: topology.kubernetes.io/zone
       containers:
       - name: nginx-dep
         image: nginx
