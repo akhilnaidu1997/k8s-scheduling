@@ -25,15 +25,15 @@ spec:
                 - roboshop
             topologyKey: topology.kubernetes.io/zone
 
-        # podAntiAffinity:
-        #   requiredDuringSchedulingIgnoredDuringExecution:
-        #   - labelSelector:
-        #       matchExpressions:
-        #       - key: Project
-        #         operator: In
-        #         values:
-        #         - roboshop
-        #     topologyKey: topology.kubernetes.io/zone
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: Project
+                operator: In
+                values:
+                - dev
+            topologyKey: topology.kubernetes.io/zone
       containers:
       - name: nginx-dep
         image: nginx
