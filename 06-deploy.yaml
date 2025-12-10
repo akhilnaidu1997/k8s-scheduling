@@ -24,6 +24,7 @@ spec:
                 values:
                 - roboshop
             topologyKey: topology.kubernetes.io/zone
+            
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
