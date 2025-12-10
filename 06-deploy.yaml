@@ -23,6 +23,10 @@ spec:
                 operator: In
                 values:
                 - roboshop
+              - key: diskType
+                operator: In
+                values:
+                - ssd
             topologyKey: kubernetes.io/hostname
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
